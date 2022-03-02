@@ -1,11 +1,11 @@
-LETSENCRYPT_EMAIL=email@example.com
-ERPNEXT_VERSION=latest
-FRAPPE_VERSION=latest
+LETSENCRYPT_EMAIL=conner@novtech.com
+ERPNEXT_VERSION=develop
+FRAPPE_VERSION=develop
 MARIADB_HOST=mariadb
 MYSQL_ROOT_PASSWORD=admin
-SITE_NAME=mysite.localhost
-SITES=`mysite.localhost`
+SITE_NAME=hub.localhost
+SITES=`hub.localhost`
 DB_ROOT_USER=root
 ADMIN_PASSWORD=admin
-INSTALL_APPS=erpnext,posawesome,frappe_s3_attachment,metabase_integration,bookings,bench_manager
+INSTALL_APPS=erpnext,bench,wiki,chat,frappe_tinymce
 ENTRYPOINT_LABEL=traefik.http.routers.excel-erpnext-nginx.entrypoints=web
