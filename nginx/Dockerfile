@@ -13,7 +13,6 @@ RUN /install_frappe ${FRAPPE_BRANCH} && \
   /install_erpnext && \
   # Install required apps with following command
   # /install_app <app_name> <repo> <app_branch>
-  /install_app bench https://github.com/DuckyThePilot/bench develop && \
   /install_app wiki https://github.com/DuckyThePilot/wiki develop && \
   /install_app chat https://github.com/DuckyThePilot/chat develop && \
   /install_app frappe_tinymce https://github.com/DuckyThePilot/frappe_tinymce develop && \
@@ -26,7 +25,7 @@ COPY --from=0 /home/frappe/frappe-bench/sites/ /var/www/html/
 COPY --from=0 /rsync /rsync
 
 # Append list of installed to apps.txt
-RUN echo -n "bench\nwiki\nchat\nfrappe_tinymce" >> /var/www/html/apps.txt
+RUN echo -n "wiki\nchat\nfrappe_tinymce" >> /var/www/html/apps.txt
 
 VOLUME [ "/assets" ]
 
