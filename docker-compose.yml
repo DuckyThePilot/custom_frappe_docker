@@ -23,8 +23,8 @@ services:
       - cert-vol:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
-  dev-erpnext-nginx:
-    image: dev-erpnext-nginx:${ERPNEXT_VERSION}
+  novtech-erpnext-nginx:
+    image: novtech-erpnext-nginx:${ERPNEXT_VERSION}
     restart: on-failure
     environment:
       - FRAPPE_PY=erpnext-python
@@ -33,15 +33,15 @@ services:
       - SOCKETIO_PORT=9000
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.dev-erpnext-nginx.rule=Host(${SITES})"
+      - "traefik.http.routers.novtech-erpnext-nginx.rule=Host(${SITES})"
       - "${ENTRYPOINT_LABEL}"
-      - "traefik.http.services.dev-erpnext-nginx.loadbalancer.server.port=80"
+      - "traefik.http.services.novtech-erpnext-nginx.loadbalancer.server.port=8080"
     volumes:
       - sites-vol:/var/www/html/sites:rw
       - assets-vol:/assets:rw
 
   erpnext-python:
-    image: dev-erpnext-worker:${ERPNEXT_VERSION}
+    image: novtech-erpnext-worker:${ERPNEXT_VERSION}
     restart: on-failure
     environment:
       - MARIADB_HOST=${MARIADB_HOST}
@@ -62,8 +62,8 @@ services:
     volumes:
       - sites-vol:/home/frappe/frappe-bench/sites:rw
 
-  dev-erpnext-worker-default:
-    image: dev-erpnext-worker:${ERPNEXT_VERSION}
+  novtech-erpnext-worker-default:
+    image: novtech-erpnext-worker:${ERPNEXT_VERSION}
     restart: on-failure
     command: worker
     depends_on:
@@ -72,8 +72,8 @@ services:
     volumes:
       - sites-vol:/home/frappe/frappe-bench/sites:rw
 
-  dev-erpnext-worker-short:
-    image: dev-erpnext-worker:${ERPNEXT_VERSION}
+  novtech-erpnext-worker-short:
+    image: novtech-erpnext-worker:${ERPNEXT_VERSION}
     restart: on-failure
     command: worker
     environment:
@@ -84,8 +84,8 @@ services:
     volumes:
       - sites-vol:/home/frappe/frappe-bench/sites:rw
 
-  dev-erpnext-worker-long:
-    image: dev-erpnext-worker:${ERPNEXT_VERSION}
+  novtech-erpnext-worker-long:
+    image: novtech-erpnext-worker:${ERPNEXT_VERSION}
     restart: on-failure
     command: worker
     environment:
@@ -97,7 +97,7 @@ services:
       - sites-vol:/home/frappe/frappe-bench/sites:rw
 
   erpnext-schedule:
-    image: dev-erpnext-worker:${ERPNEXT_VERSION}
+    image: novtech-erpnext-worker:${ERPNEXT_VERSION}
     restart: on-failure
     command: schedule
     depends_on:
@@ -134,7 +134,7 @@ services:
       - mariadb-vol:/var/lib/mysql
 
   site-creator:
-    image: dev-erpnext-worker:${ERPNEXT_VERSION}
+    image: novtech-erpnext-worker:${ERPNEXT_VERSION}
     restart: "no"
     command: new
     depends_on:
