@@ -1,11 +1,11 @@
 LETSENCRYPT_EMAIL=conner@novtech.com
-ERPNEXT_VERSION=latest
-FRAPPE_VERSION=latest
+ERPNEXT_VERSION=develop
+FRAPPE_VERSION=develop
 MARIADB_HOST=mariadb
 MYSQL_ROOT_PASSWORD=admin
 SITE_NAME=hub.localhost
 SITES=`hub.localhost`
 DB_ROOT_USER=root
 ADMIN_PASSWORD=admin
-INSTALL_APPS=erpnext,wiki,chat,frappe_tinymce
+INSTALL_APPS=erpnext,wiki,chat,frappe_tinymce,school,persona
 ENTRYPOINT_LABEL=traefik.http.routers.excel-erpnext-nginx.entrypoints=web
