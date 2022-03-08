@@ -16,6 +16,9 @@ RUN /install_frappe ${FRAPPE_BRANCH} && \
   /install_app wiki https://github.com/DuckyThePilot/wiki develop && \
   /install_app chat https://github.com/DuckyThePilot/chat develop && \
   /install_app frappe_tinymce https://github.com/DuckyThePilot/frappe_tinymce develop && \
+  /install_app school https://github.com/DuckyThePilot/school develop && \
+  /install_app persona https://github.com/DuckyThePilot/persona develop && \
+  
   # Cleanup for production
   /prepare_production
 
@@ -25,7 +28,7 @@ COPY --from=0 /home/frappe/frappe-bench/sites/ /var/www/html/
 COPY --from=0 /rsync /rsync
 
 # Append list of installed to apps.txt
-RUN echo -n "wiki\nchat\nfrappe_tinymce" >> /var/www/html/apps.txt
+RUN echo -n "wiki\nchat\nfrappe_tinymce\nschool\npersona" >> /var/www/html/apps.txt
 
 VOLUME [ "/assets" ]
 
